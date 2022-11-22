@@ -30,7 +30,7 @@ function transformarPreco(produto: {nome: string; preco: string; }) {
 const produtoNovo = transformarPreco(nintendo);
 console.log(produtoNovo)
 
-// Exercícios 
+// Exercícios
 
 function normalizarTexto(texto: string) {
     return texto.trim().toLowerCase();
@@ -52,7 +52,7 @@ if (input && total) {
 
 function calcularGanho(value: number) {
     const p = document.querySelector('p');
-    
+
     if (p) {
         p.innerText = `ganho total: ${value + 100 - value * 0.2}`
     }
@@ -70,7 +70,7 @@ if (input) {
 
 }
 
-// Exercicio 3 
+// Exercicio 3
 
 function toNumber(item: number | string) {
     if(typeof item == "number") {
@@ -91,13 +91,13 @@ interface Produto {nome: string; preco: number; teclado: boolean}
 
 function preencherDados(dados: Produto) {
     document.body.innerHTML += `
-    
+
     <div>
         <h2>${dados.nome}</h2>
         <p> R$ ${dados.preco} </p>
         <p> Inclui teclado: ${dados.teclado ? 'sim' : 'não'}
     </div>
-    
+
     `;
 }
 
@@ -158,7 +158,7 @@ function showProduct(data: Product) {
         <div>
             <h2> ${data.nome}</h2>
             <p> ${data.preco} <p/>
-            
+
             <div>
                 <h3> Fabricante: ${data.empresaFabricante.nome}</h3>
             </div>
@@ -169,3 +169,74 @@ function showProduct(data: Product) {
     `
 
 }
+
+// Arrays
+
+const numeros = [10, 20, 30, 40, 50, 3];
+const valores = [10, 'Taxas', 30, 'Produto', 50, 3];
+
+function maiorque10(data: Array<number>) {
+   return data.filter(n => n > 10)
+}
+
+function filtrarValores(data: (string | number)[]) {
+    return data.filter(item => typeof item == 'number')
+}
+
+console.log(filtrarValores(valores));
+
+console.log(maiorque10(numeros))
+
+const dados = [
+    ['senhor dos aneis', 80],
+    ['a guerra dos tronos', 120]
+];
+
+/* Exercicios
+    Defina a interface da api e mostre os dados na tela
+*/
+
+interface Cursos {
+    nome: string;
+    horas: number;
+    aulas: number;
+    gratuito: boolean;
+    tags: Array<string>;
+    idAulas: Array<number>;
+    nivel: 'iniciante' | 'avancado';
+
+}
+async function fetchCursos() {
+    const response = await fetch('https://api.origamid.dev/json/cursos.json');
+    const data = await response.json();
+    mostrarCursos(data)
+    console.log(data)
+}
+
+fetchCursos()
+
+function mostrarCursos(cursos: Cursos[]) {
+    cursos.forEach(element => {
+        let color;
+        if(element.nivel === 'iniciante') {
+            color = 'blue'
+        } else if (element.nivel === 'avancado') {
+            color = 'red'
+        }
+
+        document.body.innerHTML +=
+        `<div>
+                <h1 style="color: ${color}">${element.nome}</h1>
+                <p> ${element.nivel}</p>
+        </div>
+        `
+
+        // element.nivel == 'iniciante' ? document.body.style.color = 'red' :  document.body.style.color = 'blue'
+    });
+
+    // document.body.innerHTML = `<p>Nível: ${cursos.nivel}</p>`
+
+
+
+}
+

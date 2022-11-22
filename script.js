@@ -30,7 +30,7 @@ function transformarPreco(produto) {
 }
 const produtoNovo = transformarPreco(nintendo);
 console.log(produtoNovo);
-// Exercícios 
+// Exercícios
 function normalizarTexto(texto) {
     return texto.trim().toLowerCase();
 }
@@ -57,7 +57,7 @@ function totalMudou() {
 if (input) {
     input.addEventListener('keyup', totalMudou);
 }
-// Exercicio 3 
+// Exercicio 3
 function toNumber(item) {
     if (typeof item == "number") {
         return item;
@@ -73,13 +73,13 @@ const funcao = toNumber("a");
 console.log(funcao);
 function preencherDados(dados) {
     document.body.innerHTML += `
-    
+
     <div>
         <h2>${dados.nome}</h2>
         <p> R$ ${dados.preco} </p>
         <p> Inclui teclado: ${dados.teclado ? 'sim' : 'não'}
     </div>
-    
+
     `;
 }
 preencherDados({
@@ -113,7 +113,7 @@ function showProduct(data) {
         <div>
             <h2> ${data.nome}</h2>
             <p> ${data.preco} <p/>
-            
+
             <div>
                 <h3> Fabricante: ${data.empresaFabricante.nome}</h3>
             </div>
@@ -122,4 +122,47 @@ function showProduct(data) {
             </div>
         </div>
     `;
+}
+// Arrays
+const numeros = [10, 20, 30, 40, 50, 3];
+const valores = [10, 'Taxas', 30, 'Produto', 50, 3];
+function maiorque10(data) {
+    return data.filter(n => n > 10);
+}
+function filtrarValores(data) {
+    return data.filter(item => typeof item == 'number');
+}
+console.log(filtrarValores(valores));
+console.log(maiorque10(numeros));
+const dados = [
+    ['senhor dos aneis', 80],
+    ['a guerra dos tronos', 120]
+];
+function fetchCursos() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch('https://api.origamid.dev/json/cursos.json');
+        const data = yield response.json();
+        mostrarCursos(data);
+        console.log(data);
+    });
+}
+fetchCursos();
+function mostrarCursos(cursos) {
+    cursos.forEach(element => {
+        let color;
+        if (element.nivel === 'iniciante') {
+            color = 'blue';
+        }
+        else if (element.nivel === 'avancado') {
+            color = 'red';
+        }
+        document.body.innerHTML +=
+            `<div>
+                <h1 style="color: ${color}">${element.nome}</h1>
+                <p> ${element.nivel}</p>
+        </div>
+        `;
+        // element.nivel == 'iniciante' ? document.body.style.color = 'red' :  document.body.style.color = 'blue'
+    });
+    // document.body.innerHTML = `<p>Nível: ${cursos.nivel}</p>`
 }
