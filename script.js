@@ -184,3 +184,41 @@ const config = localStorage.getItem('config');
 console.log(button === null || button === void 0 ? void 0 : button.click());
 let totall;
 console.log(totall);
+const jogo2 = {
+    nomeProduto: 'aaaa'
+};
+jogo2.nomeProduto;
+class Produto3 {
+    constructor(nome, preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+    precoReal() {
+        return `R$ ${this.preco}`;
+    }
+}
+const livro = new Produto3('A guerra dos tronos', 200);
+console.log(livro instanceof Produto3);
+class Livro {
+    constructor(autor) {
+        this.autor = autor;
+    }
+}
+class Jogadores {
+    constructor(jogadores) {
+        this.jogadores = jogadores;
+    }
+}
+function buscarProd(busca) {
+    if (busca === 'O hobbit') {
+        return new Livro('autor');
+    }
+    if (busca === 'dark souls') {
+        return new Jogadores(2);
+    }
+    return null;
+}
+const prod = buscarProd('o hobbit');
+if (prod instanceof Livro) {
+    console.log(prod.autor);
+}

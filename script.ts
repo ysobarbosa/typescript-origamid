@@ -261,3 +261,63 @@ let totall
 
 console.log(totall)
 
+interface Product2 {
+    nomeProduto?: string;
+}
+
+const jogo2: Product2 = {
+    nomeProduto: 'aaaa'
+}
+
+jogo2.nomeProduto
+
+
+class Produto3 {
+    nome: string;
+    preco: number
+    constructor(nome: string, preco: number) {
+        this.nome = nome;
+        this.preco = preco;
+
+    }
+    precoReal() {
+        return `R$ ${this.preco}`
+    }
+}
+
+const livro = new Produto3('A guerra dos tronos', 200)
+
+console.log(livro instanceof Produto3)
+
+class Livro {
+    autor: string;
+    constructor(autor: string) {
+        this.autor = autor
+    }
+
+}
+
+class Jogadores {
+    jogadores: number;
+    constructor(jogadores: number) {
+        this.jogadores = jogadores
+    }
+
+}
+
+function buscarProd(busca: string) {
+    if(busca === 'O hobbit') {
+        return new Livro('autor')
+    }
+    if (busca === 'dark souls') {
+        return new Jogadores(2)
+    }
+    return null
+}
+
+const prod = buscarProd('o hobbit')
+
+if(prod instanceof Livro) {
+    console.log(prod.autor)
+
+}
