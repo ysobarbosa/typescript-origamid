@@ -162,7 +162,25 @@ function mostrarCursos(cursos) {
                 <p> ${element.nivel}</p>
         </div>
         `;
-        // element.nivel == 'iniciante' ? document.body.style.color = 'red' :  document.body.style.color = 'blue'
     });
-    // document.body.innerHTML = `<p>Nível: ${cursos.nivel}</p>`
 }
+function normalizar(texto) {
+    return texto.trim().toLowerCase();
+}
+console.log(normalizar(' dEsign '));
+function fetchJson(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch(url);
+        const data = yield response.json();
+        manipularData(data);
+    });
+}
+fetchJson('https://api.origamid.dev/json/cursos.json');
+function manipularData(data) {
+    console.log(data.nome);
+}
+const button = document.querySelector('button');
+const config = localStorage.getItem('config');
+console.log(button === null || button === void 0 ? void 0 : button.click());
+let totall;
+console.log(totall);

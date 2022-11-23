@@ -230,13 +230,34 @@ function mostrarCursos(cursos: Cursos[]) {
                 <p> ${element.nivel}</p>
         </div>
         `
-
-        // element.nivel == 'iniciante' ? document.body.style.color = 'red' :  document.body.style.color = 'blue'
     });
+}
 
-    // document.body.innerHTML = `<p>Nível: ${cursos.nivel}</p>`
+function normalizar(texto: string) {
+    return texto.trim().toLowerCase()
+}
 
+console.log(normalizar(' dEsign '))
 
+async function fetchJson(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    manipularData(data)
+}
+
+fetchJson('https://api.origamid.dev/json/cursos.json')
+
+function manipularData(data: {nome: string}) {
+    console.log(data.nome)
 
 }
+
+const button = document.querySelector('button');
+const config = localStorage.getItem('config');
+
+console.log(button?.click())
+
+let totall
+
+console.log(totall)
 
